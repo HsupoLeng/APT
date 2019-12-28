@@ -544,10 +544,10 @@ def read_trx(cur_trx, fnum):
     trx_fnum = fnum - int(cur_trx['firstframe'][0, 0]) + 1
     # x = int(round(cur_trx['x'][0, trx_fnum])) - 1
     # y = int(round(cur_trx['y'][0, trx_fnum])) - 1
-    x = cur_trx['x'][0, trx_fnum] - 1
-    y = cur_trx['y'][0, trx_fnum] - 1
+    x = cur_trx['x'].T[0, trx_fnum] - 1
+    y = cur_trx['y'].T[0, trx_fnum] - 1
     # -1 for 1-indexing in matlab and 0-indexing in python
-    theta = cur_trx['theta'][0, trx_fnum]
+    theta = cur_trx['theta'].T[0, trx_fnum]
     return x, y, theta
 
 

@@ -259,9 +259,9 @@ def convert_to_orig(base_locs, conf, fnum, cur_trx, crop_loc):
     fnum should be 0-indexed'''
     if conf.has_trx_file:
         trx_fnum = fnum - int(cur_trx['firstframe'][0, 0] -1 )
-        x = to_py(cur_trx['x'][0, trx_fnum])
-        y = to_py(cur_trx['y'][0, trx_fnum])
-        theta = cur_trx['theta'][0, trx_fnum]
+        x = to_py(cur_trx['x'].T[0, trx_fnum])
+        y = to_py(cur_trx['y'].T[0, trx_fnum])
+        theta = cur_trx['theta'].T[0, trx_fnum]
         # assert conf.imsz[0] == conf.imsz[1]
         base_locs_orig = to_orig(conf, base_locs, x, y, theta)
     elif crop_loc is not None:
